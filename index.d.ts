@@ -44,6 +44,7 @@ declare module "react-native-floating-action" {
     style?: ViewStyle;
     iconStyle?: ViewStyle;
     itemStyle?: ViewStyle;
+    backdropStyle?: ViewStyle;
     tintColor?: string;
     actions?: IActionProps[];
     color?: string;

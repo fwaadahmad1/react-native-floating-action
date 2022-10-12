@@ -186,7 +186,7 @@ class FloatingAction extends Component {
     } = this.props;
 
     if (overrideWithAction) {
-      const { icon } = actions[0];
+      const { icon } = actions[0]?.icon || floatingIcon;
 
       if (React.isValidElement(icon)) {
         return icon;
@@ -209,7 +209,12 @@ class FloatingAction extends Component {
       );
     }
 
-    return <AddIcon width={iconStyle?.width || iconWidth} height={iconStyle?.height || iconHeight} backgroundColor={iconStyle?.backgroundColor || iconColor} />;
+    return <AddIcon 
+      width={iconStyle?.width || iconWidth} 
+      height={iconStyle?.height || iconHeight} 
+      backgroundColor={iconStyle?.backgroundColor || iconColor} 
+      iconStyle={iconStyle}
+      />;
   };
 
   reset = () => {
@@ -528,7 +533,7 @@ class FloatingAction extends Component {
               imageStyle={action?.imageStyle}
               imageContainerStyle={action?.imageContainerStyle}
               textStyle={action?.textStyle}
-              textContainerStyle={action.textContainerStyle}
+              textContainerStyle={action?.textContainerStyle}
             />
           );
         })}
@@ -571,6 +576,7 @@ FloatingAction.propTypes = {
   tintColor: PropTypes.string,
   iconStyle: PropTypes.object,
   itemStyle: PropTypes.object,
+  backdropStyle: PropTypes.object,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       color: PropTypes.string,
